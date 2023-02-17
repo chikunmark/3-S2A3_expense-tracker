@@ -16,9 +16,16 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 // 只知道是導入 public 資料夾，導入 JS, CSS 等，但裡面的 static 到底是啥意呢？
 
-app.get('', (req, res) => {
-  res.send(`Hello world`)
-})
+// app.get('/', (req, res) => {
+//   res.render('index')
+// })
+
+// app.get('/test', (req, res) => {
+//   res.render('register')
+// })
+
+const routes = require('./routes/index')
+app.use(routes)
 
 app.listen(PORT, () => {
   console.log(`Express is listening on http://localhost:${PORT}`)
