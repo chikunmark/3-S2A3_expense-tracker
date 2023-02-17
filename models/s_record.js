@@ -11,11 +11,12 @@ const recordSchema = new Schema({
     type: String,
     required: true,
   },
-  // // 其他確定可以就繼續試它
-  // date: {
-  //   type: Date,
-  //   required: true,
-  // },
+  ////////////////// 完成後再研究 date 格式
+  date: {
+    type: String,
+    // type: Date,  // 雖然享用 date，但格式轉換太麻煩，先用 string
+    required: true,
+  },
   amount: {
     type: Number,
     required: true,
@@ -27,11 +28,11 @@ const recordSchema = new Schema({
   //   index: true, // 把這個 key/value pair 設定成這個資料表的 index，增加搜尋效率
   //   required: true,
   // },
-  // // 等初次測試 OK 再解 comment
-  // categoryId: {
-  //   type: Schema.Types.ObjectId, ///////// 覺得可增加其他資料簡化它，做完再想
-  //   required: true,
-  // },
+  // 等初次測試 OK 再解 comment
+  categoryId: {
+    type: Schema.Types.ObjectId, ///////// 覺得可增加其他資料簡化它，做完再想
+    required: true,
+  },
 })
 
 module.exports = mongoose.model('Record', recordSchema)
