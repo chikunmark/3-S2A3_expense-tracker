@@ -3,7 +3,7 @@
 <h2>{{pageInfo.title}}</h2>
 
 <div class="container">
-  <form action="/costs/{{pageInfo.id}}" method="post">
+  <form action="{{pageInfo.action}}" method="post">
     <div class="mb-3">
       <label for="name" class="form-label">名稱*：<span style='color: red;'>*必填</span></label>
       <input type="text" name="name" id="name" placeholder="例：出去玩" value="{{record.name}}" autofocus required>
