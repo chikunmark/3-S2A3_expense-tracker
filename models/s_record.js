@@ -31,6 +31,12 @@ const recordSchema = new Schema({
   // 等初次測試 OK 再解 comment
   categoryId: {
     type: Schema.Types.ObjectId, ///////// 覺得可增加其他資料簡化它，做完再想
+    ref: 'Category',
+    required: true,
+  },
+  categoryName: {
+    type: String,
+    ref: 'Category',
     required: true,
   },
 })

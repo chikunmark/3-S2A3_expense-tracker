@@ -2,6 +2,7 @@ require('./config/mongoose')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
+const helper = require('handlebars-helpers')() // 用了額外 add-on，之後想有無更簡單解法
 const PORT = process.env.PORT
 
 //////////////// 先擺上來，mongoose 設定做完時殺掉試試 -> 上有 require mongoose，先註解掉試試

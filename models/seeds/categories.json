@@ -1,22 +1,22 @@
 [
   {
     "name": "家居物業",
-    "num": 1
+    "categoryNum": 1
   },
   {
     "name": "交通出行",
-    "num": 2
+    "categoryNum": 2
   },
   {
     "name": "休閒娛樂",
-    "num": 3
+    "categoryNum": 3
   },
   {
     "name": "餐飲食品",
-    "num": 4
+    "categoryNum": 4
   },
   {
     "name": "其他",
-    "num": 5
+    "categoryNum": 5
   }
 ]

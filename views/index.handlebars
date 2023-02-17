@@ -13,6 +13,11 @@
         </h4>
         <h6>{{this.date}} </h6>
       </div>
+      <div class="col-auto me-auto">
+        <h4 style="display: inline; vertical-align: middle;">
+          {{ this.amount }}
+        </h4>
+      </div>
       <div class="col-auto">
         <a class="btn btn-success" href="./costs/edit/{{ this._id }}">修改</a>
         <form action="./costs/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
