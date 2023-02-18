@@ -16,14 +16,8 @@ router.get('/', (req, res) => {
       const amount = amountArray.reduce((a, b) => a + b, 0)
       ////////////////////// (上1) 不得不去了解 reduce 了
 
-      // ///////////////// (下1) 結果沒用到，如果改 icon 設定還是沒用到就殺掉
-      // const iconName = {
-      //   家居物業: 'fa-house',
-      //   交通出行: 'fa-van-shuttle',
-      //   休閒娛樂: 'fa-face-grin-beam',
-      //   餐飲食品: 'fa-utensils',
-      //   其他: 'fa-pen',
-      // }
+      // 轉換日期寫法 (只為 rendering)
+      records.forEach(record => (record.date = record.date.replace(/-/g, '/')))
 
       return res.render('index', { records, amount })
     })

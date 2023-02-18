@@ -1,31 +1,38 @@
 {{!-- 分類篩選功能 --}}
-<form action="/filter" method="get">
-  <select name="filter" id="filter" class="form-select" aria-label="Default select example"
-    onchange="this.form.submit()">
-    {{!-- -----------得來理解 onchange 詳細用法了 --}}
-    <option value="">請篩選支出類別</option> {{!-- 這代表沒有 value (value undefined) --}}
-    {{!-- 沒使用 #is 的時候，因為 (上1) 都是預設值，所以選它不會 change，onchane 就不會啟動，因此看起來選它沒用 -> 好像有點問題，之後再來研究，比較這個檔跟 add/edit 檔 --}}
-    <option value="" {{#is filter "" }} selected {{/is}}>不篩選</option> {{!-- 這代表 value = ‘’ (value 為空值) --}}
-    <option value="家居物業" {{#is filter '家居物業' }} selected {{/is}}>家居物業</option>
-    <option value="交通出行" {{#is filter '交通出行' }} selected {{/is}}>交通出行</option>
-    <option value="休閒娛樂" {{#is filter '休閒娛樂' }} selected {{/is}}>休閒娛樂</option>
-    <option value="餐飲食品" {{#is filter '餐飲食品' }} selected {{/is}}>餐飲食品</option>
-    <option value="其他" {{#is filter '其他' }} selected {{/is}}>其他</option>
-  </select>
-</form>
+<div class="col-8 pe-4">
+  <form action="/filter" method="get">
+    <select name="filter" id="filter" class="form-select" aria-label="Default select example"
+      onchange="this.form.submit()">
+      {{!-- -----------得來理解 onchange 詳細用法了 --}}
+      <option value="">請篩選支出類別</option>
+      {{!-- 沒使用 #is 的時候，因為 (上1) 都是預設值，所以選它不會 change，onchane 就不會啟動，因此看起來選它沒用 -> 好像有點問題，之後再來研究，比較這個檔跟 add/edit 檔 --}}
+      <option value="" {{#is filter "" }} selected {{/is}}>不篩選</option> {{!-- 這代表 value = ‘’ (value 為空值) --}}
+      <option value="家居物業" {{#is filter '家居物業' }} selected {{/is}}>家居物業</option>
+      <option value="交通出行" {{#is filter '交通出行' }} selected {{/is}}>交通出行</option>
+      <option value="休閒娛樂" {{#is filter '休閒娛樂' }} selected {{/is}}>休閒娛樂</option>
+      <option value="餐飲食品" {{#is filter '餐飲食品' }} selected {{/is}}>餐飲食品</option>
+      <option value="其他" {{#is filter '其他' }} selected {{/is}}>其他</option>
+    </select>
+  </form>
+</div>
 
 {{!-- 顯示總金額 --}}
-<h2>總金額：{{amount}}</h2>
+<div class=" d-flex flex-row mt-2 col-8">
+  <h5 class="col-4">總金額：</h5>
+  <h1 class="col-8 pe-4 text-end" style="font-size: 5em; color:rgb(255, 115, 0);">{{amount}}</h1>
+</div>
 
 {{!-- 支出項目列表 --}}
-<div class="container">
-  <ul class="list-group">
-    {{#each records}}
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-auto me-auto">
+
+<ul class="list-group">
+  {{#each records}}
+
+  <li class="list-group-item" style="border: none;" data-index="{{@index}}">
+    <div class="row align-items-center">
+      <div class="row col-8 align-items-center" data-index="{{@index}}">
+        <div class="col-2 me-1">
           {{!--------- 圖示，先用 addon 方法替代，做完有時間想更單純方法，{{#if}} 之類的 --}}
-          <i class="fa-solid 
+          <i style="font-size: 2.5em;" class="fa-solid
           {{#is this.categoryName '家居物業'}} fa-house {{/is}}
           {{#is this.categoryName '交通出行'}} fa-van-shuttle {{/is}}
           {{#is this.categoryName '休閒娛樂'}} fa-face-grin-beam {{/is}}
@@ -35,28 +42,29 @@
           {{!------------------------ 圖示 end --}}
         </div>
         <div class="col-auto me-auto">
-          <h4>
+          <h3>
             {{ this.name }}
-          </h4>
+          </h3>
           <h6>{{this.date}} </h6>
         </div>
-        <div class="col-auto me-auto">
-          <h4 style="display: inline; vertical-align: middle;">
-            {{ this.amount }}
-          </h4>
-        </div>
-        <div class="col-auto">
-          <a class="btn btn-success" href="./costs/edit/{{ this._id }}">修改</a>
-          <form action="./costs/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-            <button class="btn btn-danger" type="submit">刪除</button>
-          </form>
+        <div class="col-auto ms-auto ">
+          <h4 class="text-end"> {{ this.amount }} </h4>
         </div>
       </div>
-    </li>
-    {{/each}}
-  </ul>
+      <div class=" col-4 d-flex justify-content-center">
+        <div class=""><a class="btn" href="./costs/edit/{{ this._id }}">修改</a></div>
+        <div class="">
+          <form action="./costs/{{ this._id }}?_method=DELETE" method="POST">
+            <button class="btn " type="submit">刪除</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+
+<div class="col-8 text-center">
+  <a class="btn mb-3 w-50" style="border: black 1px solid; background-color: rgb(255, 115, 0); color:white"
+    href="/costs/add">新增支出</a>
 </div>
-
-
-
-<a class="btn btn-primary mb-3" href="/costs/add">新增支出</a>

@@ -4,7 +4,7 @@ const s_category = require('../s_category')
 
 db.once('open', () => {
   Promise.all(
-    categories.map((category, category_index) => {
+    categories.map(category => {
       ////////// 之後有時間再改進，加個判定，若已有該 category，就告知並跳過
       return s_category.create({ ...category })
     })

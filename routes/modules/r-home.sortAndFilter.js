@@ -22,6 +22,9 @@ router.get('/', (req, res) => {
       const amount = amountArray.reduce((a, b) => a + b, 0)
       ////////////////////// (上1) 不得不去了解 reduce 了
 
+      // 轉換日期寫法 (只為 rendering)
+      records.forEach(record => (record.date = record.date.replace(/-/g, '/')))
+
       return res.render('index', { records: filteredRecords, amount, filter })
     })
 })
