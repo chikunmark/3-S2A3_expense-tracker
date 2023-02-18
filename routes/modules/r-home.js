@@ -6,8 +6,9 @@ const s_record = require('../../models/s_record') // 載入 record 資料架構
 
 // 顯示首頁
 router.get('/', (req, res) => {
+  const userId = req.user._id
   s_record
-    .find()
+    .find({ userId })
     .lean()
     .then(records => {
       // 加總
@@ -15,15 +16,16 @@ router.get('/', (req, res) => {
       const amount = amountArray.reduce((a, b) => a + b, 0)
       ////////////////////// (上1) 不得不去了解 reduce 了
 
-      const iconName = {
-        家居物業: 'fa-house',
-        交通出行: 'fa-van-shuttle',
-        休閒娛樂: 'fa-face-grin-beam',
-        餐飲食品: 'fa-utensils',
-        其他: 'fa-pen',
-      }
+      // ///////////////// (下1) 結果沒用到，如果改 icon 設定還是沒用到就殺掉
+      // const iconName = {
+      //   家居物業: 'fa-house',
+      //   交通出行: 'fa-van-shuttle',
+      //   休閒娛樂: 'fa-face-grin-beam',
+      //   餐飲食品: 'fa-utensils',
+      //   其他: 'fa-pen',
+      // }
 
-      return res.render('index', { records, amount, iconName: iconName[records.categoryName] })
+      return res.render('index', { records, amount })
     })
     .catch(err => console.error(err))
 })

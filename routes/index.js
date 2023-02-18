@@ -12,11 +12,14 @@ const users = require('./modules/r-users')
 const filter = require('./modules/r-home.sortAndFilter')
 const home = require('./modules/r-home')
 
+// 載入自訂的認證設定
+const { authenticator } = require('../middleware/auth')
+
 // 使用路由檔、設定路由條件
 router.use('/auth', auth)
-router.use('/costs', costs)
 router.use('/users', users)
-router.use('/filter', filter)
-router.use('/', home)
+router.use('/costs', authenticator, costs)
+router.use('/filter', authenticator, filter)
+router.use('/', authenticator, home)
 
 module.exports = router

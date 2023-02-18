@@ -4,7 +4,6 @@ const express = require('express')
 const router = express.Router()
 const s_record = require('../../models/s_record')
 const s_category = require('../../models/s_category')
-// const helper = require('handlebars-helpers')()
 
 // 顯示新增頁面
 router.get('/add', (req, res) => {
@@ -14,6 +13,8 @@ router.get('/add', (req, res) => {
 
 // 送出新增頁面
 router.post('/', (req, res) => {
+  const userId = req.user._id
+  req.body.userId = userId
   s_category
     .findOne({ name: req.body.categoryName })
     .then(category => {
@@ -43,12 +44,12 @@ router.get('/edit/:_id', (req, res) => {
 // 送出修改頁面
 router.put('/:_id', (req, res) => {
   const _id = req.params._id
-  const updateObj = req.body
+  const updateObj = req.body // 只是為了清楚而多寫
   return (
     s_record
       .findByIdAndUpdate(_id, updateObj)
       // .then(res.redirect('/'))
-      ///////// (上1) 可能會有 非同步 問題，下1 能避免 (有帶 return，詳細原因得再研究)
+      ///////// (上1) 可能會有 非同步 問題，(下1) 能避免 (有帶 return，詳細原因得再研究)
       .then(() => res.redirect('/'))
       .catch(err => console.warn(err))
   )
@@ -61,12 +62,6 @@ router.delete('/:_id', (req, res) => {
     .findByIdAndDelete(_id)
     .then(() => res.redirect('/'))
     .catch(err => console.warn(err))
-  // 也能用傳統點的方法 (如下)
-  // return s_record
-  //   .findById(_id)
-  //   .then(record => record.remove())
-  //   .then(() => res.redirect('/'))
-  //   .catch(err => console.warn(err))
 })
 
 module.exports = router

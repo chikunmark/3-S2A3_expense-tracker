@@ -8,10 +8,8 @@ const categorySchema = new Schema({
     type: String,
     required: true,
   },
-  //////// 可能用不著
   categoryNum: {
     type: Number,
-    // required: true,
   },
 })
 

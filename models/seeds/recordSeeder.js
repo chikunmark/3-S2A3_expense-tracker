@@ -8,7 +8,7 @@ const s_category = require('../s_category')
 // 把預設 records 加入 DB
 db.once('open', () => {
   Promise.all(
-    records.map((record, record_index) => {
+    records.map(record => {
       s_category.findOne({ name: record.categoryName }).then(category => {
         record.categoryId = category._id
         return s_record.create({ ...record }) ////////// 這裡的 ... 如果只是展開，就很奇怪，再查唄

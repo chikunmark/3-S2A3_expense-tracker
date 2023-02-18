@@ -24,9 +24,7 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-auto me-auto">
-          {{!------------------------ 圖示，這裡等下用 if 解決 --}}
-          {{!-- <h4>{{this.categoryName}} </h4> --}}
-          {{!--------- 先用 addon 方法替代，做完有時間想更單純方法 --}}
+          {{!--------- 圖示，先用 addon 方法替代，做完有時間想更單純方法，{{#if}} 之類的 --}}
           <i class="fa-solid 
           {{#is this.categoryName '家居物業'}} fa-house {{/is}}
           {{#is this.categoryName '交通出行'}} fa-van-shuttle {{/is}}
