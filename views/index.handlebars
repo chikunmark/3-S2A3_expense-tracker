@@ -1,3 +1,20 @@
+{{!-- 分類篩選功能 --}}
+<form action="/filter" method="get">
+  <select name="filter" id="filter" class="form-select" aria-label="Default select example"
+    onchange="this.form.submit()">
+    {{!-- -----------得來理解 onchange 詳細用法了 --}}
+    <option value="">請篩選支出類別</option> {{!-- 這代表沒有 value (value undefined) --}}
+    {{!-- 沒使用 #is 的時候，因為 (上1) 都是預設值，所以選它不會 change，onchane 就不會啟動，因此看起來選它沒用 -> 好像有點問題，之後再來研究，比較這個檔跟 add/edit 檔 --}}
+    <option value="" {{#is filter "" }} selected {{/is}}>不篩選</option> {{!-- 這代表 value = ‘’ (value 為空值) --}}
+    <option value="家居物業" {{#is filter '家居物業' }} selected {{/is}}>家居物業</option>
+    <option value="交通出行" {{#is filter '交通出行' }} selected {{/is}}>交通出行</option>
+    <option value="休閒娛樂" {{#is filter '休閒娛樂' }} selected {{/is}}>休閒娛樂</option>
+    <option value="餐飲食品" {{#is filter '餐飲食品' }} selected {{/is}}>餐飲食品</option>
+    <option value="其他" {{#is filter '其他' }} selected {{/is}}>其他</option>
+  </select>
+</form>
+
+{{!-- 顯示總金額 --}}
 <h2>總金額：{{amount}}</h2>
 
 {{!-- 支出項目列表 --}}
@@ -7,9 +24,17 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-auto me-auto">
-          {{!-- 圖示，這裡等下用 if 解決 --}}
-          <i class="fa-solid fa-house"></i>
-          {{!-- 圖示 end --}}
+          {{!------------------------ 圖示，這裡等下用 if 解決 --}}
+          {{!-- <h4>{{this.categoryName}} </h4> --}}
+          {{!--------- 先用 addon 方法替代，做完有時間想更單純方法 --}}
+          <i class="fa-solid 
+          {{#is this.categoryName '家居物業'}} fa-house {{/is}}
+          {{#is this.categoryName '交通出行'}} fa-van-shuttle {{/is}}
+          {{#is this.categoryName '休閒娛樂'}} fa-face-grin-beam {{/is}}
+          {{#is this.categoryName '餐飲食品'}} fa-utensils {{/is}}
+          {{#is this.categoryName '其他'}} fa-pen {{/is}}
+          "></i>
+          {{!------------------------ 圖示 end --}}
         </div>
         <div class="col-auto me-auto">
           <h4>
