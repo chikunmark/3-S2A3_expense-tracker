@@ -1,33 +1,38 @@
-<ul class="list-group">
-  {{#each records}}
-  <li class="list-group-item">
-    <div class="row">
-      <div class="col-auto me-auto">
-        {{!-- 圖示，這裡等下用 if 解決 --}}
-        <i class="fa-solid fa-house"></i>
-        {{!-- 圖示 end --}}
+<h2>總金額：{{amount}}</h2>
+
+{{!-- 支出項目列表 --}}
+<div class="container">
+  <ul class="list-group">
+    {{#each records}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto me-auto">
+          {{!-- 圖示，這裡等下用 if 解決 --}}
+          <i class="fa-solid fa-house"></i>
+          {{!-- 圖示 end --}}
+        </div>
+        <div class="col-auto me-auto">
+          <h4>
+            {{ this.name }}
+          </h4>
+          <h6>{{this.date}} </h6>
+        </div>
+        <div class="col-auto me-auto">
+          <h4 style="display: inline; vertical-align: middle;">
+            {{ this.amount }}
+          </h4>
+        </div>
+        <div class="col-auto">
+          <a class="btn btn-success" href="./costs/edit/{{ this._id }}">修改</a>
+          <form action="./costs/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger" type="submit">刪除</button>
+          </form>
+        </div>
       </div>
-      <div class="col-auto me-auto">
-        <h4>
-          {{ this.name }}
-        </h4>
-        <h6>{{this.date}} </h6>
-      </div>
-      <div class="col-auto me-auto">
-        <h4 style="display: inline; vertical-align: middle;">
-          {{ this.amount }}
-        </h4>
-      </div>
-      <div class="col-auto">
-        <a class="btn btn-success" href="./costs/edit/{{ this._id }}">修改</a>
-        <form action="./costs/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-          <button class="btn btn-danger" type="submit">刪除</button>
-        </form>
-      </div>
-    </div>
-  </li>
-  {{/each}}
-</ul>
+    </li>
+    {{/each}}
+  </ul>
+</div>
 
 
 

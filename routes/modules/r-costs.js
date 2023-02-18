@@ -48,7 +48,7 @@ router.put('/:_id', (req, res) => {
     s_record
       .findByIdAndUpdate(_id, updateObj)
       // .then(res.redirect('/'))
-      // (上1) 可能會有 非同步 問題，下1 能避免 (有帶 return，詳細原因得再研究)
+      ///////// (上1) 可能會有 非同步 問題，下1 能避免 (有帶 return，詳細原因得再研究)
       .then(() => res.redirect('/'))
       .catch(err => console.warn(err))
   )
