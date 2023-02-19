@@ -1,9 +1,7 @@
 // 這是 route 設定
 
 const router = require('express').Router()
-////////////////////// 簡化了，先測試一個就好，成功再改到其他地方，以前如下2
-// const express = require('express')
-// const router = express.Router()
+////////////////////// 簡化了，先測試一個就好，成功再改到其他地方 -> 目前沒問題，改!
 
 // 載入路由細節
 const auth = require('./modules/r-auth')

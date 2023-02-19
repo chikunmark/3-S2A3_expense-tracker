@@ -1,8 +1,5 @@
 // 這個檔是用來定義 record 資料架構
 
-// const { Date } = require('mongoose/lib')
-//////// (上1) 這個在我使用 type: Date 時就跑出來，不知為何，先註解掉，有錯再開
-
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -21,7 +18,6 @@ const recordSchema = new Schema({
     type: Number,
     required: true,
   },
-  ////////////////// 還沒做使用者 (登入) 機制，做了再啟用
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',

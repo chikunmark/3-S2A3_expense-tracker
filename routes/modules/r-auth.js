@@ -1,8 +1,7 @@
 // 這是 route 設定
 
-const express = require('express')
+const router = require('express').Router()
 const passport = require('passport')
-const router = express.Router()
 
 // 觸發 FB 登入程序
 router.get(

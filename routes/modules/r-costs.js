@@ -1,7 +1,6 @@
 // 這是 route 設定
 
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const s_record = require('../../models/s_record')
 const s_category = require('../../models/s_category')
 

@@ -1,7 +1,6 @@
 // 這是 route 設定
 
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 
 // /////////////// (下1) r-auth.js 也有用到，全部完成後可試，看能不能簡化
 const passport = require('passport')

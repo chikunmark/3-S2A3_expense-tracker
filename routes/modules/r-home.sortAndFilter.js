@@ -1,8 +1,7 @@
 // 這是 route 設定
 
-const express = require('express')
+const router = require('express').Router()
 const s_record = require('../../models/s_record')
-const router = express.Router()
 
 // 分類篩選功能
 router.get('/', (req, res) => {

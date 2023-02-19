@@ -1,5 +1,3 @@
-///////////////////// 我的擺法沒按教案順序，有問題先改這
-
 // 載入 addon
 const express = require('express')
 const session = require('express-session')
@@ -13,12 +11,6 @@ const usePassport = require('./config/passport')
 const routes = require('./routes/index') // 載入自訂的路由設定
 // 設定變數
 const PORT = process.env.PORT
-
-//////////////// 先擺上來，mongoose 設定做完時殺掉試試 -> 上有 require mongoose，先註解掉試試
-// 若不是生產環境，使用 dotenv (套件)
-// if (process.env.NODE_ENV !== 'production') {
-//   require('dotenv').config()
-// }
 
 const app = express()
 
