@@ -54,7 +54,7 @@ http://localhost:3000
 ```
 
 5. 依畫面要求註冊帳號，或是使用下列預設帳密，然後登入服務  
-   email: 123@example.com
+   email: 123@example.com  
    password: 123
 
 6. 若想停止環境 (停用專案)，請在終端機按下 Ctrl + C (windows)，或其 OS 的相應按鍵
