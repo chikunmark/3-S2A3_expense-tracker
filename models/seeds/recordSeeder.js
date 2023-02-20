@@ -33,6 +33,7 @@ db.once('open', () => {
   //   })
   // )
   // Promise.all() 裡，陣列的元素必須要有值 (被 return)，否則 promise.all 不起作用)！！！
+  // 因為 return 值為 undefined
   Promise.all(
     records.map((record, record_index) => {
       return s_category
