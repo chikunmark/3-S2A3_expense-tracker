@@ -5,7 +5,7 @@
       onchange="this.form.submit()">
       {{!-- -----------得來理解 onchange 詳細用法了 --}}
       <option value="">請篩選支出類別</option>
-      {{!-- 沒使用 #is 的時候，因為 (上1) 都是預設值，所以選它不會 change，onchane 就不會啟動，因此看起來選它沒用 -> 好像有點問題，之後再來研究，比較這個檔跟 add/edit 檔 --}}
+      {{!-- 沒使用 #is 的時候，因為 (上1) 都是預設值，所以選它不會 change，onchange 就不會啟動，因此看起來選它沒用 -> 好像有點問題，之後再來研究，比較這個檔跟 add/edit 檔 --}}
       <option value="" {{#is filter "" }} selected {{/is}}>不篩選</option> {{!-- 這代表 value = ‘’ (value 為空值) --}}
       <option value="家居物業" {{#is filter '家居物業' }} selected {{/is}}>家居物業</option>
       <option value="交通出行" {{#is filter '交通出行' }} selected {{/is}}>交通出行</option>
