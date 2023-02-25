@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       // 加總
       const amountArray = records.map(records => records.amount)
       const amount = amountArray.reduce((a, b) => a + b, 0)
-      ////////////////////// (上1) 不得不去了解 reduce 了
+      // reduce 裡的 initialValue 還不能省呢，為了避免無法運算 (amountArray 是空的且沒 initialValue)
 
       // 轉換日期寫法 (只為 rendering)
       records.forEach(record => (record.date = record.date.replace(/-/g, '/')))
