@@ -23,6 +23,10 @@ app.use(express.static('public'))
 app.use(
   session({
     secret: process.env.SESSION_SECRET, // 這參數是 session 用來驗證 session id 的字串，由我們設定，可改成隨機的一個字串
+    cookie:{  // 不確定用途
+      secure: true,
+      maxAge:60000
+    },
     resave: false, // 若為 true，每次有新的 request，就會把 session 更新到 session store，然後蓋過去
     saveUninitialized: true, // 若為 true，強制將未初始化的 session 存回 session store。未初始化表示這個 session 是新的而且沒有被修改過，例如未登入的使用者的 session。
   })
